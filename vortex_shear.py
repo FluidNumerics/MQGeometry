@@ -3,8 +3,8 @@ import numpy as np
 import time
 import torch
 
-from helmholtz import solve_helmholtz_dst, solve_helmholtz_dst_cmm
-from qgm import QGFV
+from MQGeometry.helmholtz import solve_helmholtz_dst, solve_helmholtz_dst_cmm
+from MQGeometry.qgm import QGFV
 
 torch.backends.cudnn.deterministic = True
 device = 'cuda' if torch.cuda.is_available() else 'cpu'

@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib
 import torch
 
-from masks import Masks
+from MQGeometry.masks import Masks
 
 matplotlib.rcParams.update({'font.size': 18})
 

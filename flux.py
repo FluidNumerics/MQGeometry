@@ -5,7 +5,7 @@ Louis Thiry, 2023
 import torch
 import torch.nn.functional as F
 
-from reconstruction import \
+from MQGeometry.reconstruction import \
         linear2, linear3_left, linear4, linear5_left, \
         weno3, weno3z, weno5, weno5z
 

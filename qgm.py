@@ -1,12 +1,12 @@
 import numpy as np
 import torch
 
-from fd import grad_perp, interp_TP, laplacian_h
-from flux import div_flux_3pts, div_flux_5pts, \
+from MQGeometry.fd import grad_perp, interp_TP, laplacian_h
+from MQGeometry.flux import div_flux_3pts, div_flux_5pts, \
                  div_flux_3pts_mask, div_flux_5pts_mask
-from helmholtz import compute_laplace_dst, solve_helmholtz_dst, \
+from MQGeometry.helmholtz import compute_laplace_dst, solve_helmholtz_dst, \
                       solve_helmholtz_dst_cmm, compute_capacitance_matrices
-from masks import Masks
+from MQGeometry.masks import Masks
 
 
 class QGFV:

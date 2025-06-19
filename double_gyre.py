@@ -6,7 +6,7 @@ import os
 import time
 import torch
 
-from qgm import QGFV
+from MQGeometry.qgm import QGFV
 
 torch.backends.cudnn.deterministic = True
 device = 'cuda' if torch.cuda.is_available() else 'cpu'

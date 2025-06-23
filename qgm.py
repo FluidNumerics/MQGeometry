@@ -53,6 +53,8 @@ class QGFV:
 
         # wind forcing
         self.wind_forcing = torch.zeros((1, 1, nx, ny), **self.arr_kwargs)
+        # side wall drag
+        self.side_wall_drag = torch.zeros((n_ens, nl, nx, ny), **self.arr_kwargs)
 
         # flux computations
         if self.flux_stencil == 5:
@@ -190,6 +192,7 @@ class QGFV:
         # wind forcing + bottom drag
         omega = self.interp_TP(self.laplacian_h(self.psi, self.dx, self.dy)*self.masks.psi)
         bottom_drag = -self.bottom_drag_coef * omega[...,[-1],:,:]
+        side_drag = -self.side_wall_drag * omega
         if self.nl == 1:
             fcg_drag = self.wind_forcing + bottom_drag
         elif self.nl == 2:
@@ -197,7 +200,7 @@ class QGFV:
         else:
             fcg_drag = torch.cat([self.wind_forcing, self.zeros_inside, bottom_drag], dim=-3)
 
-        return (-div_flux + fcg_drag) * self.masks.q
+        return (-div_flux + fcg_drag + side_drag) * self.masks.q
 
 
     def compute_time_derivatives(self):
